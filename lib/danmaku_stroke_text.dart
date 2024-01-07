@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ns_danmaku/utils/border_color.dart';
 
 class DanmakuStrokeText extends StatelessWidget {
   final String text;
@@ -7,6 +8,7 @@ class DanmakuStrokeText extends StatelessWidget {
   final double fontSize;
   final double strokeWidth;
   final FontWeight fontWeight;
+  final bool isSend;
   const DanmakuStrokeText(
     this.text, {
     this.textAlign = TextAlign.left,
@@ -14,6 +16,7 @@ class DanmakuStrokeText extends StatelessWidget {
     this.fontSize = 16,
     this.strokeWidth = 2.0,
     this.fontWeight = FontWeight.normal,
+    this.isSend = false,
     Key? key,
   }) : super(key: key);
 
@@ -29,6 +32,7 @@ class DanmakuStrokeText extends StatelessWidget {
             fontSize: fontSize,
             overflow: TextOverflow.visible,
             fontWeight: fontWeight,
+            backgroundColor: isSend ? getBorderColor(color) : null,
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = strokeWidth
@@ -53,10 +57,4 @@ class DanmakuStrokeText extends StatelessWidget {
   }
 
   //double get strokeWidth => (fontSize / 20).ceil() * 2;
-
-  Color getBorderColor(Color color) {
-    var brightness =
-        ((color.red * 299) + (color.green * 587) + (color.blue * 114)) / 1000;
-    return brightness > 70 ? Colors.black : Colors.white;
-  }
 }

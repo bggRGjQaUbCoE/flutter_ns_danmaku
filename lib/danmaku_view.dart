@@ -189,6 +189,7 @@ class _DanmakuViewState extends State<DanmakuView> {
           _controllers.addAll({id: e});
         },
         key: key,
+        isSend: e.isSend,
       )
     });
   }
@@ -233,6 +234,7 @@ class _DanmakuViewState extends State<DanmakuView> {
           onCreated: (e) {
             _controllers.addAll({id: e});
           },
+          isSend: item.isSend,
         )
       });
     }
