@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
   double _duration = 8;
   double _lineHeight = 1.2;
   double _fontSize = (Platform.isIOS || Platform.isAndroid) ? 16 : 25;
-  FontWeight _fontWeight = FontWeight.normal;
+  int _fontWeight = 5;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,13 +165,13 @@ class _HomePageState extends State<HomePage> {
               ),
               Text("FontWidght : $_fontWeight"),
               Slider(
-                value: _fontWeight.index.toDouble(),
+                value: _fontWeight.toDouble(),
                 min: 0,
                 max: 8,
                 divisions: 8,
                 onChanged: (e) {
                   setState(() {
-                    _fontWeight = FontWeight.values[e.toInt()];
+                    _fontWeight = e.toInt();
                   });
                   _controller.updateOption(
                       _controller.option.copyWith(fontWeight: _fontWeight));

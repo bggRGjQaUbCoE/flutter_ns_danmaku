@@ -131,8 +131,7 @@ class _DanmakuViewState extends State<DanmakuView> {
       return;
     }
     //计算此弹幕尺寸
-    var danmuSize = calculateTextSize(
-        e.text, _option.fontSize, _option.strokeWidth, _option.fontWeight);
+    var danmuSize = calculateTextSize(e.text);
     //初始x坐标为0,即在屏幕的最左侧
     //x坐标为1时是弹幕自身宽度的1倍
     //将弹幕起始位置设置在屏幕的最右侧，x=容器宽度/弹幕宽度
@@ -278,12 +277,7 @@ class _DanmakuViewState extends State<DanmakuView> {
   }
 
   double computeTopAvailableRow(DanmakuItem item) {
-    var danmuSize = calculateTextSize(
-      item.text,
-      _option.fontSize,
-      _option.strokeWidth,
-      _option.fontWeight,
-    );
+    var danmuSize = calculateTextSize(item.text);
     // 哪一行可以加入弹幕
     var row = _topOutTimes.indexWhere((e) => e <= _runTime);
     if (row == -1) {
@@ -295,12 +289,7 @@ class _DanmakuViewState extends State<DanmakuView> {
   }
 
   double computeBottomAvailableRow(DanmakuItem item) {
-    var danmuSize = calculateTextSize(
-      item.text,
-      _option.fontSize,
-      _option.strokeWidth,
-      _option.fontWeight,
-    );
+    var danmuSize = calculateTextSize(item.text);
     // 哪一行可以加入弹幕
     var row = _bottomOutTimes.indexWhere((e) => e < _runTime);
     if (row == -1) {
@@ -464,12 +453,7 @@ class _DanmakuViewState extends State<DanmakuView> {
   }
 
   void calculateRowNum(double height) {
-    var itemSize = calculateTextSize(
-      '测试vjgpqa',
-      _option.fontSize,
-      _option.strokeWidth,
-      _option.fontWeight,
-    );
+    var itemSize = calculateTextSize('测试vjgpqa');
     _itemHeight = itemSize.height;
 
     //计算最大行数
@@ -487,12 +471,7 @@ class _DanmakuViewState extends State<DanmakuView> {
   }
 
   /// 计算文本尺寸
-  Size calculateTextSize(
-    String value,
-    double fontSize,
-    double strokeWidth,
-    FontWeight fontWeight,
-  ) {
+  Size calculateTextSize(String value) {
     //var letterSpacing = (fontSize / 20).ceil() * 2.0;
     TextPainter painter = TextPainter(
       locale: Localizations.localeOf(context),
@@ -502,13 +481,13 @@ class _DanmakuViewState extends State<DanmakuView> {
       text: TextSpan(
         text: value,
         style: TextStyle(
-          fontSize: fontSize,
-          fontWeight: fontWeight,
+          fontSize: _option.fontSize,
+          fontWeight: FontWeight.values[_option.fontWeight],
           // letterSpacing: letterSpacing,
           overflow: TextOverflow.visible,
           foreground: Paint()
             ..style = PaintingStyle.stroke
-            ..strokeWidth = strokeWidth
+            ..strokeWidth = _option.strokeWidth
             ..strokeCap = StrokeCap.round
             ..strokeJoin = StrokeJoin.round
             ..color = Colors.black,

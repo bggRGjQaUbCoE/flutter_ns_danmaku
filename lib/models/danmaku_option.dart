@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 class DanmakuOption {
   /// 默认的字体大小
   final double fontSize;
@@ -29,7 +27,7 @@ class DanmakuOption {
   final bool strokeText;
 
   /// 字重
-  final FontWeight fontWeight;
+  final int fontWeight;
 
   /// 弹幕行高
   /// - 1.0表示字体大小的1倍，数字越大弹幕上下间距越大
@@ -46,7 +44,7 @@ class DanmakuOption {
     this.hideTop = false,
     this.strokeText = true,
     this.strokeWidth = 2.0,
-    this.fontWeight = FontWeight.normal,
+    this.fontWeight = 5,
     this.lineHeight = 1.2,
   });
 
@@ -60,7 +58,7 @@ class DanmakuOption {
     bool? hideScroll,
     bool? strokeText,
     double? strokeWidth,
-    FontWeight? fontWeight,
+    int? fontWeight,
     double? lineHeight,
   }) {
     return DanmakuOption(

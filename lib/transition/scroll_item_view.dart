@@ -13,7 +13,7 @@ class ScrollItemView extends StatefulWidget {
   final bool border;
   final Size size;
   final double strokeWidth;
-  final FontWeight fontWeight;
+  final int fontWeight;
   final Function(String)? onComplete;
   final Function(AnimationController)? onCreated;
   final bool isSend;
@@ -28,7 +28,7 @@ class ScrollItemView extends StatefulWidget {
     this.size = Size.zero,
     this.border = true,
     this.strokeWidth = 2.0,
-    this.fontWeight = FontWeight.normal,
+    this.fontWeight = 5,
     this.onComplete,
     this.onCreated,
     this.isSend = false,
@@ -100,7 +100,7 @@ class _ScrollItemViewState extends State<ScrollItemView>
                 style: TextStyle(
                   color: widget.color,
                   fontSize: widget.fontSize,
-                  fontWeight: widget.fontWeight,
+                  fontWeight: FontWeight.values[widget.fontWeight],
                   letterSpacing: 2,
                   overflow: TextOverflow.visible,
                   backgroundColor:

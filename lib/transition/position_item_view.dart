@@ -12,7 +12,7 @@ class PositionItemView extends StatefulWidget {
   final double strokeWidth;
   final Function(String)? onComplete;
   final Function(AnimationController)? onCreated;
-  final FontWeight fontWeight;
+  final int fontWeight;
   final bool isSend;
   const PositionItemView({
     required this.text,
@@ -24,7 +24,7 @@ class PositionItemView extends StatefulWidget {
     this.strokeWidth = 2.0,
     this.onComplete,
     this.onCreated,
-    this.fontWeight = FontWeight.normal,
+    this.fontWeight = 5,
     this.isSend = false,
     required UniqueKey key,
   }) : super(key: key);
@@ -111,7 +111,7 @@ class _PositionItemViewState extends State<PositionItemView>
                     fontSize: widget.fontSize,
                     letterSpacing: 2,
                     overflow: TextOverflow.visible,
-                    fontWeight: widget.fontWeight,
+                    fontWeight: FontWeight.values[widget.fontWeight],
                     backgroundColor:
                         widget.isSend ? getBorderColor(widget.color) : null,
                   ),

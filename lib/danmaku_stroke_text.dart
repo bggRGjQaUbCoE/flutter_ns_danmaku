@@ -7,7 +7,7 @@ class DanmakuStrokeText extends StatelessWidget {
   final Color color;
   final double fontSize;
   final double strokeWidth;
-  final FontWeight fontWeight;
+  final int fontWeight;
   final bool isSend;
   const DanmakuStrokeText(
     this.text, {
@@ -15,7 +15,7 @@ class DanmakuStrokeText extends StatelessWidget {
     this.color = Colors.white,
     this.fontSize = 16,
     this.strokeWidth = 2.0,
-    this.fontWeight = FontWeight.normal,
+    this.fontWeight = 5,
     this.isSend = false,
     Key? key,
   }) : super(key: key);
@@ -31,7 +31,7 @@ class DanmakuStrokeText extends StatelessWidget {
           style: TextStyle(
             fontSize: fontSize,
             overflow: TextOverflow.visible,
-            fontWeight: fontWeight,
+            fontWeight: FontWeight.values[fontWeight],
             backgroundColor: isSend ? getBorderColor(color) : null,
             foreground: Paint()
               ..style = PaintingStyle.stroke
@@ -47,7 +47,7 @@ class DanmakuStrokeText extends StatelessWidget {
           textAlign: textAlign,
           style: TextStyle(
             fontSize: fontSize,
-            fontWeight: fontWeight,
+            fontWeight: FontWeight.values[fontWeight],
             color: color,
             overflow: TextOverflow.visible,
           ),
